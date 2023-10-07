@@ -1,0 +1,589 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Imóveis API Documentation",
+        "description": "This is documentation to API Rest Imóveis",
+        "contact": {
+            "url": "https://github.com/ezequidias"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Create user",
+                "description": "Create a new user",
+                "operationId": "RegisterUser",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUserRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "422": {
+                        "description": "Error data fields"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login user",
+                "description": "Login a user",
+                "operationId": "loginUser",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginUserRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "422": {
+                        "description": "Error data fields"
+                    }
+                }
+            }
+        },
+        "/api/user": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get user information",
+                "description": "Returns user information",
+                "operationId": "getUserInfo",
+                "responses": {
+                    "200": {
+                        "description": "Get user information"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout user",
+                "description": "Logout User",
+                "operationId": "logoutUser",
+                "responses": {
+                    "200": {
+                        "description": "Logout User"
+                    }
+                }
+            }
+        },
+        "/api/dashboard": {
+            "get": {
+                "tags": [
+                    "Dashboard"
+                ],
+                "summary": "Get info dashboard",
+                "description": "Returns info dashboard",
+                "operationId": "getInfoDashboard",
+                "responses": {
+                    "200": {
+                        "description": "Get info dashboard"
+                    }
+                }
+            }
+        },
+        "/api/properties": {
+            "get": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Get list of Properties",
+                "description": "Returns list of Properties",
+                "operationId": "getPropertiesList",
+                "responses": {
+                    "200": {
+                        "description": "Get all Properties"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Create property",
+                "description": "Create a new property with the specified details.<br>type(ENUM) = 'house, apartment, land' <br> status (ENUM) = 'available, rented, sold'",
+                "operationId": "createProperty",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePropertyRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "422": {
+                        "description": "Error data fields"
+                    }
+                }
+            }
+        },
+        "/api/properties/{id}": {
+            "get": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Get property information",
+                "description": "Returns property data",
+                "operationId": "getPropertiesById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Property id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Update existing property",
+                "description": "Returns updated property data",
+                "operationId": "updateProperty",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Property id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdatePropertyRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "422": {
+                        "description": "Error data fields"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Delete existing property",
+                "description": "Deletes a record",
+                "operationId": "deleteProperty",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Property id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get list of Users",
+                "description": "Returns list of Users",
+                "operationId": "getUsersList",
+                "responses": {
+                    "200": {
+                        "description": "Get all Users"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create user",
+                "description": "Create a new user with the specified details.<br>type(ENUM) = 'house, apartment, land' <br> status (ENUM) = 'available, rented, sold'",
+                "operationId": "createUser",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePropertyRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "422": {
+                        "description": "Error data fields"
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get user information",
+                "description": "Returns user data",
+                "operationId": "getUsersById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update existing user",
+                "description": "Returns updated user data",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdatePropertyRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "422": {
+                        "description": "Error data fields"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete existing user",
+                "description": "Deletes a record",
+                "operationId": "deleteUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CreatePropertyRequest": {
+                "title": "Create Property Request",
+                "description": "Create Property request body data",
+                "required": [
+                    "type",
+                    "address",
+                    "price",
+                    "status"
+                ],
+                "properties": {
+                    "type": {
+                        "title": "type",
+                        "description": "Type of the new property",
+                        "type": "string",
+                        "enum": [
+                            "house",
+                            "apartment",
+                            "land"
+                        ],
+                        "example": "house"
+                    },
+                    "address": {
+                        "title": "address",
+                        "description": "Address of the new property",
+                        "type": "string",
+                        "example": "Av. Brig. Faria Lima, 1721 - Jardim Paulistano, São Paulo - SP, 01452-001"
+                    },
+                    "price": {
+                        "title": "price",
+                        "description": "Price of the new property",
+                        "type": "number",
+                        "format": "float",
+                        "example": "350000.00"
+                    },
+                    "status": {
+                        "title": "status",
+                        "description": "Status of the new property",
+                        "type": "string",
+                        "enum": [
+                            "available",
+                            "rented",
+                            "sold"
+                        ],
+                        "example": "available"
+                    }
+                },
+                "type": "object"
+            },
+            "CreateUserRequest": {
+                "title": "Create User Request",
+                "description": "Create user request body data",
+                "required": [
+                    "name",
+                    "email",
+                    "password",
+                    "c_password"
+                ],
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "Name of the new property",
+                        "type": "string",
+                        "example": "Ezequiel Dias"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "Email of the new property",
+                        "type": "string",
+                        "example": "teste@teste.com.br"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "Password of the new property",
+                        "type": "string",
+                        "example": ""
+                    }
+                },
+                "type": "object"
+            },
+            "LoginUserRequest": {
+                "title": "Login User Request",
+                "description": "Login user request body data",
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "title": "email",
+                        "description": "Email of the new property",
+                        "type": "string",
+                        "example": "teste@teste.com.br"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "Password of the new property",
+                        "type": "string",
+                        "example": ""
+                    }
+                },
+                "type": "object"
+            },
+            "UpdatePropertyRequest": {
+                "title": "Update Property Request",
+                "description": "Update Property request body data",
+                "required": [
+                    "id",
+                    "type",
+                    "address",
+                    "price",
+                    "status"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "ID of the property",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "type": {
+                        "title": "type",
+                        "description": "Type of the new property",
+                        "type": "string",
+                        "enum": [
+                            "house",
+                            "apartment",
+                            "land"
+                        ],
+                        "example": "house"
+                    },
+                    "address": {
+                        "title": "address",
+                        "description": "Address of the new property",
+                        "type": "string",
+                        "example": "Av. Brig. Faria Lima, 1721 - Jardim Paulistano, São Paulo - SP, 01452-001"
+                    },
+                    "price": {
+                        "title": "price",
+                        "description": "Price of the new property",
+                        "type": "number",
+                        "format": "float",
+                        "example": "400000.00"
+                    },
+                    "status": {
+                        "title": "status",
+                        "description": "Status of the new property",
+                        "type": "string",
+                        "enum": [
+                            "available",
+                            "rented",
+                            "sold"
+                        ],
+                        "example": "available"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Auth",
+            "description": "API Endpoints of Auth"
+        },
+        {
+            "name": "Users",
+            "description": "API Endpoints of Users"
+        },
+        {
+            "name": "Properties",
+            "description": "API Endpoints of Properties"
+        },
+        {
+            "name": "Dashboard",
+            "description": "API Endpoints of Dashboard"
+        }
+    ]
+}
