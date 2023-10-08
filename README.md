@@ -16,7 +16,7 @@ This is a project to Imóveis with API REST
 Setup With Docker Development:
 
 ```sh
-docker-compose -f docker/docker-compose.yml up -d --build nginx php-fpm workspace mysql
+docker-compose up -d
 
 ```
 
@@ -28,32 +28,15 @@ composer install
 php artisan start
 ```
 
-This application allows running processes in the background with laravel horizon or queue.
-
-Setup With Docker:
-
-```sh
-docker-compose -f docker/docker-compose.yml up -d --build redis laravel-horizon // Laravel Horizon
-//OR
-docker-compose -f docker/docker-compose.yml up -d --build php-worker // Laravel Queues
-
-```
-
-Setup with Artisan
-
-```sh
-php artisan horizon // Laravel Horizon
-// OR
-php artisan queue:work --queue=upload_worksheet // Laravel Queues
-
-```
-
 ## Documentation
 
 In the main route`(/)` of this api there is a documentation made in Swagger with all the REST principles<br><br>
 
-![Screenshot_317](https://user-images.githubusercontent.com/25870781/200200461-dc4ef672-0b45-450e-8506-ccfd372aafdc.png)
+![Screenshot_select-area_20231007225727](https://github.com/ezequidias/imoveis_api/assets/25870781/ce54d073-0edf-4a21-abdc-46eb452e70da)
 
 ## Tests<br><br>
 
-![Screenshot_318](https://user-images.githubusercontent.com/25870781/200200473-94f72493-d2a1-4cab-9137-dbcd4f0a2169.png)
+![Screenshot_select-area_20231007225949](https://github.com/ezequidias/imoveis_api/assets/25870781/ae8d29e7-cda1-4a64-ac69-ee9cd766196e)
+
+![Screenshot_select-area_20231007225657](https://github.com/ezequidias/imoveis_api/assets/25870781/a1e4427a-4fdb-4f53-be72-b2d2422250b4)
+
