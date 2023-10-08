@@ -36,5 +36,7 @@ In the main route`(/)` of this api there is a documentation made in Swagger with
 
 ## Tests<br><br>
 
+![Screenshot_select-area_20231007225949](https://github.com/ezequidias/imoveis_api/assets/25870781/ae8d29e7-cda1-4a64-ac69-ee9cd766196e)
+
 ![Screenshot_select-area_20231007225657](https://github.com/ezequidias/imoveis_api/assets/25870781/a1e4427a-4fdb-4f53-be72-b2d2422250b4)
 
